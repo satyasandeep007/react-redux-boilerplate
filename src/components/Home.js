@@ -1,22 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { increment, decrement, login, logout } from "../redux/actions/actions";
 
 export class Component2 extends Component {
 
   increment = () => {
-    this.props.dispatch({ type: 'INCREMENT' });
+    this.props.increment();
   }
 
   decrement = () => {
-    this.props.dispatch({ type: 'DECREMENT' });
+    this.props.decrement();
   }
 
   login = () => {
-    this.props.dispatch({ type: 'LOGIN' });
+    this.props.login();
   }
 
   logout = () => {
-    this.props.dispatch({ type: 'LOGOUT' });
+    this.props.logout();
   }
 
   render() {
@@ -44,8 +45,15 @@ const mapStateToProps = state => ({
   logged: state.logger.isLoggedIn
 });
 
-// const mapDispatchToProps = dispatch => {
-//   return { delTask: taskID => dispatch(delTask(taskID)) };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    increment: count => dispatch(increment(count)),
+    decrement: count => dispatch(decrement(count)),
+    login: logged => dispatch(login(logged)),
+    logout: logged => dispatch(logout(logged))
+  };
+};
 
-export default connect(mapStateToProps)(Component2);
+export default connect(mapStateToProps
+  , mapDispatchToProps
+)(Component2);
