@@ -24,15 +24,13 @@ export class Component2 extends Component {
     return (
       <div>
         <div>
-          <h6>Count </h6>
+          <h4>Count : {this.props.count}</h4>
           <button onClick={this.decrement}>-</button>
-          {this.props.count}
           <button onClick={this.increment}>+</button>
         </div>
         <div>
-          <h6>logged </h6>
+          <h4>is logged : {this.props.logged ? "true" : "false"} </h4>
           <button onClick={this.login}>Login</button>
-          {this.props.logged}
           <button onClick={this.logout}>Logout</button>
         </div>
       </div>
